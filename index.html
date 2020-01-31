@@ -1,45 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PixiJS Starter</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Files Fiddle</title>
 
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <!-- stylesheet -->
+      <link rel="stylesheet" href="style.css">
+
+      <!-- google fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+      
+      <!-- icons -->
+      <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+      <!-- gsap -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+
+      <!-- AnimeJS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+      <!-- JQuery -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.2.1/pixi.min.js"></script>
-    <script>
+      
+      <div class="hero">
+            <section>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <h1 class="hero-headline mt-5">Have You Ever Wondered</h1>
+                        <p class="hero-tagline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis vel enim odit libero ex tempora voluptatem mollitia ipsa vitae sint?</p>
+                        <div class="card">
+                              <div class="card-body">
+                                    <h5 class="card-title">Sign Up</h5>
+                                    <div class="card-text">
+                                          <form>
+                                                <div class="form-group">
+                                                  <label for="exampleInputEmail1">Email address</label>
+                                                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                                </div>
+                                          </form>
+                                    </div>
+                                    <a href="#" class="btn">Confirm</a>
+                              </div>
+                        </div>
+                  </div>
+                    </div>
+                  </div>
 
-    // variables
-    let displacementSensitivity = 10
-    let width = window.innerWidth
-    let height = window.innerHeight
-    let app = new PIXI.Application({width: width, height: height});
-    document.body.appendChild(app.view);
+                 
+                </section>
+            </div>
+      </div>
 
-    // original image
-    let image = new PIXI.Sprite.from("/image/image.jpg");
-    image.width = width
-    image.height = height
+           
 
-    // depth map
-    depthMap = new PIXI.Sprite.from("/img/depthMap.jpg")
-
-    // displacement filter
-    displacementFilter = new PIXI.filters.DisplacementFilter(depthMap);
-
-    //staging
-    app.stage.addChild(image);
-    app.stage.addChild(depthMap)
-    app.stage.filters = [displacementFilter];
-
-    window.onmousemove = function(e) {
-        displacementFilter.scale.x = (width / 2 - e.clientX) / displacementSensitivity;
-        displacementFilter.scale.y = (height / 2 - e.clientY) / displacementSensitivity;
-    }
-
-
-    </script>
+      <!-- js -->
+      <script src="script.js"></script>
 </body>
 </html>
