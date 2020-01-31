@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PixiJS Starter</title>
+
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.2.1/pixi.min.js"></script>
+    <script>
+
+    // variables
+    let displacementSensitivity = 10
+    let width = window.innerWidth
+    let height = window.innerHeight
+    let app = new PIXI.Application({width: width, height: height});
+    document.body.appendChild(app.view);
+
+    // original image
+    let image = new PIXI.Sprite.from("/image/image.jpg");
+    image.width = width
+    image.height = height
+
+    // depth map
+    depthMap = new PIXI.Sprite.from("/img/depthMap.jpg")
+
+    // displacement filter
+    displacementFilter = new PIXI.filters.DisplacementFilter(depthMap);
+
+    //staging
+    app.stage.addChild(image);
+    app.stage.addChild(depthMap)
+    app.stage.filters = [displacementFilter];
+
+    window.onmousemove = function(e) {
+        displacementFilter.scale.x = (width / 2 - e.clientX) / displacementSensitivity;
+        displacementFilter.scale.y = (height / 2 - e.clientY) / displacementSensitivity;
+    }
+
+
+    </script>
+</body>
+</html>
